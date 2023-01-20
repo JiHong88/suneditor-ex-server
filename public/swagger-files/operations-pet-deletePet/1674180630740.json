@@ -1,1 +1,0 @@
-{"id":"163b6889-c1ac-4ccc-a624-5ca2de80f227","name":"key","scheme":"https","pathName":"/pet/{petId}","method":"delete","params":{"api_key":"apikey","petId":"56713"}}

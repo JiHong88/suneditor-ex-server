@@ -1,1 +1,0 @@
-{"id":"1b9835af-b4d0-4a58-9f48-c8405bbd81e2","name":"select pending","scheme":"https","pathName":"/pet/findByStatus","method":"get","params":{"status":["pending"]}}

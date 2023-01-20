@@ -1,1 +1,0 @@
-{"id":"1045bbe6-a6c6-43d7-bc53-1c1267bb3175","name":"emyty, file","scheme":"https","pathName":"/pet/{petId}/uploadImage","method":"post","params":{"petId":"123","additionalMetadata":"","file":{}}}

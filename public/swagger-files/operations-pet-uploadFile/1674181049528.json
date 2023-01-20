@@ -1,1 +1,0 @@
-{"id":"700a5e7c-3b88-4240-88c0-d2e2487be76f","name":"empty2","scheme":"https","pathName":"/pet/{petId}/uploadImage","method":"post","params":{"petId":"123","additionalMetadata":"","file":""}}
