@@ -25,7 +25,7 @@ app.use(fileUpload({
 }));
 
 // cors
-const whitelist = ['http://localhost:8080', 'http://localhost:3200']
+const whitelist = ['http://localhost:8080', 'http://localhost:8088', 'http://localhost:3200']
 const corsOptions = {
     origin (origin, callback) {
         if (!origin || whitelist.indexOf(origin) !== -1) {

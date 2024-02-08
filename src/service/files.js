@@ -52,7 +52,7 @@ module.exports.readFiles = async (folder) => {
 	};
 };
 
-module.exports.upload = async (files, path) => {
+module.exports.upload = async (files, path, prefixPath) => {
 	const uploads = [];
 	let error = '';
 	let promise;
@@ -67,7 +67,7 @@ module.exports.upload = async (files, path) => {
 						reject(err);
 					} else {
 						resolve({
-							url: 'http://localhost:3000/' + p,
+							url: prefixPath + p,
 							name: f.name,
 							size: f.size,
 						});
