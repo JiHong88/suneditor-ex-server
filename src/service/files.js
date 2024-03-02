@@ -22,12 +22,12 @@ module.exports.create = async (folder, fileName, content) => {
 	} catch (err) {
 		return {
 			status: 500,
-			message: err.message,
+			message: err.message
 		};
 	}
 
 	return {
-		status: 200,
+		status: 200
 	};
 };
 
@@ -48,7 +48,7 @@ module.exports.readFiles = async (folder) => {
 
 	return {
 		status,
-		data,
+		data
 	};
 };
 
@@ -69,7 +69,7 @@ module.exports.upload = async (files, path, prefixPath) => {
 						resolve({
 							url: prefixPath + p,
 							name: f.name,
-							size: f.size,
+							size: f.size
 						});
 					}
 				});
@@ -92,7 +92,7 @@ module.exports.upload = async (files, path, prefixPath) => {
 		status: error ? 500 : 200,
 		data: {
 			errorMessage: error,
-			result: uploads,
-		},
+			result: uploads
+		}
 	};
 };

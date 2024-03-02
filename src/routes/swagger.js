@@ -14,8 +14,6 @@ router.get('/:tagId', async (req, res) => {
 	res.status(result.status).send(result.data.reverse());
 });
 
-router.delete('/:tagId/:id', async (req, res) => {
-	
-})
+router.delete('/:tagId/:id', async (req, res) => {});
 
 module.exports = router;
