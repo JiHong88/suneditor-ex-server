@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const puppeteer = require('puppeteer');
 const filesService = require('../service/files');
 const mentionService = require('../service/mention');
 const path = require('path');
 const fs = require('fs');
 
+// files
 router.post('/upload', async (req, res) => {
 	// res.setHeader('Access-Control-Allow-Origin', '*')
 	if (!req.files || Object.keys(req.files).length === 0) {
@@ -49,6 +51,7 @@ router.get('/files/download/*', (req, res) => {
 	});
 });
 
+// mention
 router.get('/mention/info/*', (req, res) => {
 	const name = req.params[0];
 	const result = mentionService.get(name, 1);
@@ -70,6 +73,46 @@ router.get('/mention/*', (req, res) => {
 			url: `http://localhost:3000/editor/mention/info/${key}`
 		}))
 	);
+});
+
+// pdf
+router.post('/download-pdf', async (req, res) => {
+	console.log('download-pdf');
+	const { htmlContent, fileName } = req.body;
+
+	if (!htmlContent) {
+		return res.status(400).send('No HTML content provided.');
+	}
+
+	const browser = await puppeteer.launch({ headless: false });
+	const page = await browser.newPage();
+
+	page.on('console', (consoleObj) => console.log(consoleObj.text()));
+	await page.goto('about:blank');
+	await page.setContent(htmlContent, { waitUntil: 'domcontentloaded' });
+	await page.evaluate(() => console.log(document.documentElement.outerHTML)); // HTML 출력
+
+	await page.setContent(htmlContent, {
+		waitUntil: 'domcontentloaded'
+		// waitUntil: 'networkidle0'
+	});
+
+	const pdf = await page.pdf({
+		format: 'A4',
+		printBackground: true,
+		margin: {
+			top: '20px',
+			right: '20px',
+			bottom: '20px',
+			left: '20px'
+		}
+	});
+
+	await browser.close();
+
+	res.setHeader('Content-Type', 'application/pdf');
+	res.setHeader('Content-Disposition', `attachment; filename="${fileName}.pdf"`);
+	res.send(pdf);
 });
 
 module.exports = router;

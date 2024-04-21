@@ -12,8 +12,10 @@ const app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// parse application/json
-app.use(bodyParser.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // static path
 app.use('/public', express.static('public'));
@@ -27,7 +29,7 @@ app.use(
 );
 
 // cors
-const whitelist = ['http://localhost:8080', 'http://localhost:8088', 'http://localhost:3200'];
+const whitelist = ['http://localhost:8080', 'http://localhost:8088', 'http://localhost:3200', 'http://localhost:3000'];
 const corsOptions = {
 	origin(origin, callback) {
 		if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -35,9 +37,13 @@ const corsOptions = {
 		} else {
 			callback(new Error('Not allowed by CORS'));
 		}
-	}
+	},
+	methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+	allowedHeaders: ['Content-Type', 'Authorization'],
+	exposedHeaders: ['Content-Disposition']
 };
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // routes
 app.use('/', indexRouter);
