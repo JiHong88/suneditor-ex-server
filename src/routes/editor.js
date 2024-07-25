@@ -3,6 +3,7 @@ const router = express.Router();
 const puppeteer = require('puppeteer');
 const filesService = require('../service/files');
 const mentionService = require('../service/mention');
+const pdfService = require('../service/pdf');
 const path = require('path');
 const fs = require('fs');
 
@@ -84,31 +85,8 @@ router.post('/download-pdf', async (req, res) => {
 		return res.status(400).send('No HTML content provided.');
 	}
 
-	const browser = await puppeteer.launch({ headless: false });
-	const page = await browser.newPage();
-
-	page.on('console', (consoleObj) => console.log(consoleObj.text()));
-	await page.goto('about:blank');
-	await page.setContent(htmlContent, { waitUntil: 'domcontentloaded' });
-	await page.evaluate(() => console.log(document.documentElement.outerHTML)); // HTML 출력
-
-	await page.setContent(htmlContent, {
-		waitUntil: 'domcontentloaded'
-		// waitUntil: 'networkidle0'
-	});
-
-	const pdf = await page.pdf({
-		format: 'A4',
-		printBackground: true,
-		margin: {
-			top: '20px',
-			right: '20px',
-			bottom: '20px',
-			left: '20px'
-		}
-	});
-
-	await browser.close();
+	const pdf = await pdfService.downloadPdf(htmlContent);
+	console.log('pdf', pdf);
 
 	res.setHeader('Content-Type', 'application/pdf');
 	res.setHeader('Content-Disposition', `attachment; filename="${fileName}.pdf"`);
