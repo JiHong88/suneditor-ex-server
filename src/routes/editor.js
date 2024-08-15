@@ -80,13 +80,13 @@ router.get('/mention/*', (req, res) => {
 router.post('/download-pdf', async (req, res) => {
 	console.log('download-pdf');
 	const { htmlContent, fileName } = req.body;
+	console.log(htmlContent);
 
 	if (!htmlContent) {
 		return res.status(400).send('No HTML content provided.');
 	}
 
-	const pdf = await pdfService.downloadPdf(htmlContent);
-	console.log('pdf', pdf);
+	const pdf = await pdfService.downloadPDF(htmlContent);
 
 	res.setHeader('Content-Type', 'application/pdf');
 	res.setHeader('Content-Disposition', `attachment; filename="${fileName}.pdf"`);
