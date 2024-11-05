@@ -93,4 +93,154 @@ router.post('/download-pdf', async (req, res) => {
 	res.send(pdf);
 });
 
+// gallery
+router.get('/gallery/image', async (req, res) => {
+	const result = [
+		{
+			src: 'http://suneditor.com/docs/cat.jpg',
+			name: 'Tabby',
+			alt: 'Tabby',
+			tag: ['Cat', 'Dog']
+		},
+		{
+			src: 'http://suneditor.com/docs/cat1.jpg',
+			name: 'Cat paw',
+			alt: 'Cat paw',
+			tag: 'Cat, Tiger'
+		},
+		{
+			src: 'http://suneditor.com/docs/cat2.jpg',
+			name: 'Cat',
+			alt: 'Cat',
+			tag: 'Cat'
+		},
+		{
+			src: 'http://suneditor.com/docs/dog.jpg',
+			name: 'Dog',
+			alt: 'Dog',
+			tag: 'Dog'
+		},
+		{
+			src: 'http://suneditor.com/docs/welsh Corgi.jpg',
+			name: 'Welsh Corgi',
+			alt: 'Welsh Corgi',
+			tag: 'Dog'
+		},
+		{
+			src: 'http://suneditor.com/docs/retriever.jpg',
+			name: 'Retriever',
+			alt: 'Retriever',
+			tag: 'Dog'
+		},
+		{
+			src: 'http://suneditor.com/docs/tiger1.jpg',
+			name: 'Tiger-1',
+			alt: 'Tiger',
+			tag: 'Tiger'
+		},
+		{
+			src: 'http://suneditor.com/docs/tiger2.jpg',
+			name: 'Tiger-2',
+			alt: 'Tiger',
+			tag: 'Tiger'
+		},
+		{
+			src: 'http://suneditor.com/docs/tiger3.jpg',
+			name: 'Tiger-3',
+			alt: 'Tiger',
+			tag: 'Tiger'
+		},
+		{
+			src: 'http://suneditor.com/docs/white-eagle.jpg',
+			name: 'White eagle',
+			alt: 'Bird-White eagle',
+			tag: 'Bird'
+		},
+		{
+			src: 'http://suneditor.com/docs/ara.jpg',
+			name: 'Ara',
+			alt: 'Bird-Ara',
+			tag: 'Bird'
+		},
+		{
+			src: 'http://suneditor.com/docs/dove.jpg',
+			name: 'Dove',
+			alt: 'Bird-Dove',
+			tag: 'Bird'
+		},
+		{
+			src: 'http://suneditor.com/docs/big-whale.jpg',
+			name: 'Big whale',
+			alt: 'Big whale',
+			tag: 'Whale'
+		},
+		{
+			src: 'http://suneditor.com/docs/sea-whale.jpg',
+			name: 'Whale of the sea',
+			alt: 'Whale of the sea',
+			tag: 'Whale'
+		},
+		{
+			src: 'http://suneditor.com/docs/blue-whale.jpg',
+			name: 'Blue whale',
+			alt: 'Blue whale',
+			tag: 'Whale'
+		}
+	];
+
+	res.status(200).send(result);
+});
+
+router.get('/gallery/video', async (req, res) => {
+	const data = {
+		result: [
+			{
+				src: 'http://suneditor.com/docs/sample_video_1.mp4',
+				name: 'Sample video 1',
+				// thumbnail: 'http://suneditor.com/docs/thumbnail_1.webp',
+				tag: ['vi1', 'avi']
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_video_2.mp4',
+				name: 'Sample video 2',
+				thumbnail: 'http://suneditor.com/docs/thumbnail_2.jpg',
+				tag: 'a1, vi1'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_video_3.mp4',
+				name: 'Sample video 3',
+				thumbnail: 'http://suneditor.com/docs/thumbnail_3.jpg',
+				tag: 'avi'
+			}
+		]
+	};
+
+	res.status(200).send(data);
+});
+
+router.get('/gallery/audio', async (req, res) => {
+	const data = {
+		result: [
+			{
+				src: 'http://suneditor.com/docs/sample_audio_1.mp3',
+				name: 'Sample audio 1',
+				tag: ['vi1', 'avi']
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_audio_1.mp3',
+				name: 'Sample audio 2',
+				thumbnail: 'http://suneditor.com/docs/thumbnail_2.jpg',
+				tag: 'a1, vi1'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_audio_1.mp3',
+				name: 'Sample audio 3',
+				tag: 'avi'
+			}
+		]
+	};
+
+	res.status(200).send(data);
+});
+
 module.exports = router;
