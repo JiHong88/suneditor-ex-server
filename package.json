@@ -1,7 +1,7 @@
 {
-  "name": "multicloud-console-back",
+  "name": "suneditor-ex-server",
   "version": "1.0.0",
-  "description": "Multicloud console backend",
+  "description": "Suneditor example server",
   "main": "index.js",
   "scripts": {
     "test": "test",
