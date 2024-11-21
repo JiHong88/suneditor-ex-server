@@ -6,6 +6,7 @@ const mentionService = require('../service/mention');
 const pdfService = require('../service/pdf');
 const path = require('path');
 const fs = require('fs');
+const { type } = require('os');
 
 // files
 router.post('/upload', async (req, res) => {
@@ -195,10 +196,18 @@ router.get('/gallery/video', async (req, res) => {
 	const data = {
 		result: [
 			{
+				src: 'https://youtu.be/jWQx2f-CErU?list=RDjWQx2f-CErU',
+				name: 'aespa Whiplash',
+				thumbnail: 'http://suneditor.com/docs/aespa_whiplash.jpg',
+				tag: ['vi1', 'avi'],
+				frame: 'iframe'
+			},
+			{
 				src: 'http://suneditor.com/docs/sample_video_1.mp4',
 				name: 'Sample video 1',
 				// thumbnail: 'http://suneditor.com/docs/thumbnail_1.webp',
-				tag: ['vi1', 'avi']
+				tag: ['vi1', 'avi'],
+				frame: 'video'
 			},
 			{
 				src: 'http://suneditor.com/docs/sample_video_2.mp4',
@@ -236,6 +245,80 @@ router.get('/gallery/audio', async (req, res) => {
 				src: 'http://suneditor.com/docs/sample_audio_1.mp3',
 				name: 'Sample audio 3',
 				tag: 'avi'
+			}
+		]
+	};
+
+	res.status(200).send(data);
+});
+
+router.get('/gallery/file', async (req, res) => {
+	const data = {
+		result: [
+			{
+				src: 'http://suneditor.com/docs/sample_file_1.docx',
+				name: 'Sample file 1',
+				tag: ['vi1', 'avi']
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_file_2.docx',
+				name: 'Sample file 2',
+				tag: 'a1, vi1'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_file_3.pdf',
+				name: 'Sample file 3',
+				tag: 'avi'
+			}
+		]
+	};
+
+	res.status(200).send(data);
+});
+
+router.get('/filebrowser', async (req, res) => {
+	const data = {
+		result: [
+			{
+				src: 'http://suneditor.com/docs/cat.jpg',
+				name: 'Tabby',
+				alt: 'Tabby',
+				tag: ['Cat', 'Dog'],
+				type: 'image'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_audio_1.mp3',
+				name: 'Sample audio 1',
+				tag: ['vi1', 'avi'],
+				type: 'audio'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_file_1.docx',
+				name: 'Sample file 1',
+				tag: ['vi1', 'avi'],
+				type: 'file'
+			},
+			{
+				src: 'https://youtu.be/jWQx2f-CErU?list=RDjWQx2f-CErU',
+				name: 'aespa Whiplash',
+				thumbnail: 'http://suneditor.com/docs/aespa_whiplash.jpg',
+				tag: ['vi1', 'avi'],
+				frame: 'iframe',
+				type: 'video'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_video_1.mp4',
+				name: 'Sample video 1',
+				tag: ['vi1', 'avi'],
+				frame: 'video',
+				type: 'video'
+			},
+			{
+				src: 'http://suneditor.com/docs/sample_video_2.mp4',
+				name: 'Sample video 2',
+				thumbnail: 'http://suneditor.com/docs/thumbnail_2.jpg',
+				tag: 'a1, vi1',
+				type: 'video'
 			}
 		]
 	};
