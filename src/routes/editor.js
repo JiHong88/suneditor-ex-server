@@ -278,49 +278,79 @@ router.get('/gallery/file', async (req, res) => {
 
 router.get('/filebrowser', async (req, res) => {
 	const data = {
-		result: [
-			{
-				src: 'http://suneditor.com/docs/cat.jpg',
-				name: 'Tabby',
-				alt: 'Tabby',
-				tag: ['Cat', 'Dog'],
-				type: 'image'
+		status: 200,
+		result: {
+			images: {
+				name: 'Images',
+				_data: [
+					{
+						src: 'http://suneditor.com/docs/cat.jpg',
+						name: 'Tabby',
+						alt: 'Tabby',
+						tag: ['Cat', 'Dog'],
+						type: 'image'
+					},
+					{
+						src: 'http://suneditor.com/docs/cat1.jpg',
+						name: 'Cat paw',
+						alt: 'Cat paw',
+						tag: 'Cat, Tiger',
+						type: 'image'
+					}
+				],
+				cats: {
+					name: 'Cats',
+					_data: [
+						{
+							src: 'http://suneditor.com/docs/cat.jpg',
+							name: 'Tabby',
+							alt: 'Tabby',
+							tag: ['Cat', 'Dog'],
+							type: 'image'
+						},
+						{
+							src: 'http://suneditor.com/docs/cat1.jpg',
+							name: 'Cat paw',
+							alt: 'Cat paw',
+							tag: 'Cat, Tiger',
+							type: 'image'
+						}
+					]
+				},
+				dogs: {
+					name: 'Dogs',
+					_data: [
+						{
+							src: 'http://suneditor.com/docs/dog.jpg',
+							name: 'Dog',
+							alt: 'Dog',
+							tag: 'Dog',
+							type: 'image'
+						},
+						{
+							src: 'http://suneditor.com/docs/welsh Corgi.jpg',
+							name: 'Welsh Corgi',
+							alt: 'Welsh Corgi',
+							tag: 'Dog',
+							type: 'image'
+						}
+					]
+				}
 			},
-			{
-				src: 'http://suneditor.com/docs/sample_audio_1.mp3',
-				name: 'Sample audio 1',
-				tag: ['vi1', 'avi'],
-				type: 'audio'
-			},
-			{
-				src: 'http://suneditor.com/docs/sample_file_1.docx',
-				name: 'Sample file 1',
-				tag: ['vi1', 'avi'],
-				type: 'file'
-			},
-			{
-				src: 'https://youtu.be/jWQx2f-CErU?list=RDjWQx2f-CErU',
-				name: 'aespa Whiplash',
-				thumbnail: 'http://suneditor.com/docs/aespa_whiplash.jpg',
-				tag: ['vi1', 'avi'],
-				frame: 'iframe',
-				type: 'video'
-			},
-			{
-				src: 'http://suneditor.com/docs/sample_video_1.mp4',
-				name: 'Sample video 1',
-				tag: ['vi1', 'avi'],
-				frame: 'video',
-				type: 'video'
-			},
-			{
-				src: 'http://suneditor.com/docs/sample_video_2.mp4',
-				name: 'Sample video 2',
-				thumbnail: 'http://suneditor.com/docs/thumbnail_2.jpg',
-				tag: 'a1, vi1',
-				type: 'video'
+			audio: {
+				folder1: { _data: '/gallery/audio' },
+				folder2: {
+					_data: [
+						{
+							src: 'http://suneditor.com/docs/sample_audio_1.mp3',
+							name: 'Sample audio 1',
+							tag: ['vi1', 'avi'],
+							type: 'audio'
+						}
+					]
+				}
 			}
-		]
+		}
 	};
 
 	res.status(200).send(data);
