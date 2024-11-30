@@ -372,6 +372,36 @@ router.get('/filebrowser', async (req, res) => {
 						}
 					]
 				}
+			},
+			video: {
+				_data: [
+					{
+						src: 'https://youtu.be/jWQx2f-CErU?list=RDjWQx2f-CErU',
+						name: 'aespa Whiplash',
+						thumbnail: 'http://suneditor.com/docs/aespa_whiplash.jpg',
+						tag: ['vi1', 'avi'],
+						frame: 'iframe'
+					},
+					{
+						src: 'http://suneditor.com/docs/sample_video_1.mp4',
+						name: 'Sample video 1',
+						// thumbnail: 'http://suneditor.com/docs/thumbnail_1.webp',
+						tag: ['vi1', 'avi'],
+						frame: 'video'
+					},
+					{
+						src: 'http://suneditor.com/docs/sample_video_2.mp4',
+						name: 'Sample video 2',
+						thumbnail: 'http://suneditor.com/docs/thumbnail_2.jpg',
+						tag: 'a1, vi1'
+					},
+					{
+						src: 'http://suneditor.com/docs/sample_video_3.mp4',
+						name: 'Sample video 3',
+						thumbnail: 'http://suneditor.com/docs/thumbnail_3.jpg',
+						tag: 'avi'
+					}
+				]
 			}
 		}
 	};
