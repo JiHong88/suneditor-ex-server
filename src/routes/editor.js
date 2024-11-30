@@ -282,6 +282,7 @@ router.get('/filebrowser', async (req, res) => {
 		result: {
 			images: {
 				name: 'Images',
+				// default: true,
 				_data: [
 					{
 						src: 'http://suneditor.com/docs/cat.jpg',
@@ -296,10 +297,32 @@ router.get('/filebrowser', async (req, res) => {
 						alt: 'Cat paw',
 						tag: 'Cat, Tiger',
 						type: 'image'
+					},
+					{
+						src: 'http://suneditor.com/docs/cat2.jpg',
+						name: 'Cat',
+						alt: 'Cat',
+						tag: 'Cat',
+						type: 'image'
+					},
+					{
+						src: 'http://suneditor.com/docs/dog.jpg',
+						name: 'Dog',
+						alt: 'Dog',
+						tag: 'Dog',
+						type: 'image'
+					},
+					{
+						src: 'http://suneditor.com/docs/welsh Corgi.jpg',
+						name: 'Welsh Corgi',
+						alt: 'Welsh Corgi',
+						tag: 'Dog',
+						type: 'image'
 					}
 				],
 				cats: {
 					name: 'Cats',
+					default: true,
 					_data: [
 						{
 							src: 'http://suneditor.com/docs/cat.jpg',
@@ -338,7 +361,7 @@ router.get('/filebrowser', async (req, res) => {
 				}
 			},
 			audio: {
-				folder1: { _data: '/gallery/audio' },
+				folder1: { _data: 'http://localhost:3000/editor/gallery/audio' },
 				folder2: {
 					_data: [
 						{
