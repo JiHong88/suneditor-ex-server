@@ -380,26 +380,30 @@ router.get('/filebrowser', async (req, res) => {
 						name: 'aespa Whiplash',
 						thumbnail: 'http://suneditor.com/docs/aespa_whiplash.jpg',
 						tag: ['vi1', 'avi'],
-						frame: 'iframe'
+						frame: 'iframe',
+						type: 'video'
 					},
 					{
 						src: 'http://suneditor.com/docs/sample_video_1.mp4',
 						name: 'Sample video 1',
 						// thumbnail: 'http://suneditor.com/docs/thumbnail_1.webp',
 						tag: ['vi1', 'avi'],
-						frame: 'video'
+						frame: 'video',
+						type: 'video'
 					},
 					{
 						src: 'http://suneditor.com/docs/sample_video_2.mp4',
 						name: 'Sample video 2',
 						thumbnail: 'http://suneditor.com/docs/thumbnail_2.jpg',
-						tag: 'a1, vi1'
+						tag: 'a1, vi1',
+						type: 'video'
 					},
 					{
 						src: 'http://suneditor.com/docs/sample_video_3.mp4',
 						name: 'Sample video 3',
 						thumbnail: 'http://suneditor.com/docs/thumbnail_3.jpg',
-						tag: 'avi'
+						tag: 'avi',
+						type: 'video'
 					}
 				]
 			}
